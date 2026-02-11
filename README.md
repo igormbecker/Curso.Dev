@@ -21,7 +21,7 @@ nvm install lts/hydrogen
 npm install next@13.1.6 react@18.2.0 react-dom@18.2.0
 ```
 - Abra o power shell no windows e clique na seta > e clique em linux terminal.
-- Localizar a pasta ~/curso.dev/Curso.Dev no terminal do linux e execute o comando a seguir:
+- Localizar a pasta /home/igormbecker/curso.dev/Curso.Dev no terminal do linux e execute o comando a seguir:
 ```bash
 code .
 ```
