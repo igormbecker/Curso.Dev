@@ -10,7 +10,7 @@ React-Dom: react-dom@18.2.0
 # Comandos utilizados: 
 - listar versões do node: 
 ``` bash
-nvm -ls
+nvm ls
 ```
 - para instalar o node: 
 ``` bash
