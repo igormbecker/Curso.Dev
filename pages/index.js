@@ -27,8 +27,4 @@ function Home() {
   );
 }
 
-function Test() {
-  console.log("Test function executed");
-}
-
 export default Home;
