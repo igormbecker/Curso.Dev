@@ -8,6 +8,7 @@ Projeto desenvolvido no curso.dev que clone o projeto do site www.tabnews.com.br
 - NextJs: next@13.1.6
 - React: react@18.2.0
 - React-Dom: react-dom@18.2.0
+- Testes: jest@29.6.2
 
 # Comandos utilizados para rodar o projeto local:
 
@@ -27,6 +28,10 @@ nvm install lts/hydrogen
 
 ```bash
 npm install next@13.1.6 react@18.2.0 react-dom@18.2.0
+```
+
+```bash
+npm install --save-dev jest@29.6.2
 ```
 
 - Abra o power shell no windows e clique na seta > e clique em linux terminal.
@@ -52,4 +57,14 @@ npm run lint:check
 
 ```bash
 npm run lint:fix
+```
+
+- para rodar os testes automatizados de todo projeto:
+
+```bash
+npm run test
+```
+
+```bash
+npm run test:watch
 ```
