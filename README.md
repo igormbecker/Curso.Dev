@@ -30,6 +30,8 @@ nvm install lts/hydrogen
 npm install next@13.1.6 react@18.2.0 react-dom@18.2.0
 ```
 
+- O comando '--save-dev' serve para dizer que esta é uma dependencia de desenvolvimento.
+
 ```bash
 npm install --save-dev jest@29.6.2
 ```
