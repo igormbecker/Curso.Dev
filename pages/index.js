@@ -1,4 +1,39 @@
+import { useEffect, useState } from "react";
+
 function Home() {
+  const fullText = `>>> This page is under construction...
+                    >>> Please comeback later :)
+                    >>> Bye 👋`;
+
+  const typingSpeed = 50;
+  const deletingSpeed = 30;
+  const pauseAfterTyping = 5000;
+
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    let timeout;
+
+    if (!isDeleting && displayedText.length < fullText.length) {
+      timeout = setTimeout(() => {
+        setDisplayedText(fullText.slice(0, displayedText.length + 1));
+      }, typingSpeed);
+    } else if (!isDeleting && displayedText.length === fullText.length) {
+      timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, pauseAfterTyping);
+    } else if (isDeleting && displayedText.length > 0) {
+      timeout = setTimeout(() => {
+        setDisplayedText(fullText.slice(0, displayedText.length - 1));
+      }, deletingSpeed);
+    } else if (isDeleting && displayedText.length === 0) {
+      setIsDeleting(false);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, fullText]);
+
   return (
     <div
       style={{
@@ -6,23 +41,18 @@ function Home() {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
-        background: "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
-        color: "white",
-        textAlign: "center",
+        backgroundColor: "#0d1117",
+        color: "#00ff88",
+        fontFamily: "Courier New, monospace",
+        fontSize: "1.4rem",
         padding: "20px",
+        whiteSpace: "pre-line",
       }}
     >
-      <h1 style={{ fontSize: "2rem" }}>
-        🎉 Parabéns pelo Clínicas ter te chamado, mozão! 💙
-        <br />
-        <br />
-        Eu tenho muito orgulho de você 😍
-        <br />
-        Vai dar tudo certo 🙏✨
-        <br />
-        <br />
-        Tmj sempre 🚀❤️
-      </h1>
+      <div>
+        {displayedText}
+        <span style={{ opacity: 0.8 }}>█</span>
+      </div>
     </div>
   );
 }

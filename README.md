@@ -37,10 +37,16 @@ npm install --save-dev jest@29.6.2
 ```
 
 - Abra o power shell no windows e clique na seta > e clique em linux terminal.
-- Localizar a pasta /home/igormbecker/curso.dev/Curso.Dev no terminal do linux e execute o comando a seguir:
+- Localizar a pasta /home/igormbecker/projects/Curso.Dev no terminal do linux e execute o comando a seguir:
 
 ```bash
 code .
+```
+
+- Instale as dependencias:
+
+```bash
+npm install
 ```
 
 - Para rodar o projeto:
