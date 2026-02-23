@@ -1,4 +1,4 @@
-﻿const calculadora = require("../models/calculadora.js");
+﻿const calculadora = require("../../models/calculadora.js");
 
 test("soma de 1 + 2 deve ser igual a 3", () => {
   const result = calculadora.somar(1, 2);
