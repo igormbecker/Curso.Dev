@@ -11,6 +11,7 @@ Projeto desenvolvido no curso.dev que clone o projeto do site www.tabnews.com.br
 - Testes: jest@29.6.2
 
 # Banco de dados utilizado
+Basicamente o nosso banco de dados ficou em um container criado pelo docker.
 As especificações do banco de dados e versão utilizada, estão dentro do arquivo 'compose.yaml', ao rodar o comando de subir o docker, ele procura este arquivo e segue as características definidas neste arquivo.
 
 - Postgres: postgres:16.0-alpine3.18
