@@ -1,6 +1,6 @@
 # Curso.Dev
 
-Projeto desenvolvido no curso.dev que clone o projeto do site www.tabnews.com.br
+Projeto desenvolvido no curso.dev que clona o projeto do site www.tabnews.com.br
 
 # Frameworks instalados
 
@@ -9,10 +9,11 @@ Projeto desenvolvido no curso.dev que clone o projeto do site www.tabnews.com.br
 - React: react@18.2.0
 - React-Dom: react-dom@18.2.0
 - Testes: jest@29.6.2
+- Migrations: node-pg-migrate@6.2.2 + dotenv@16.4.4
 
 # Banco de dados utilizado
 
-Basicamente o nosso banco de dados ficou em um container criado pelo docker.
+Basicamente o nosso banco de dados local ficou em um container criado pelo docker.
 As especificações do banco de dados e versão utilizada, estão dentro do arquivo 'compose.yaml', ao rodar o comando de subir o docker, ele procura este arquivo e segue as características definidas neste arquivo.
 
 - Postgres: postgres:16.0-alpine3.18
