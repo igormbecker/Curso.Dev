@@ -9,7 +9,7 @@ Projeto desenvolvido no curso.dev que clona o projeto do site www.tabnews.com.br
 - React: react@18.2.0
 - React-Dom: react-dom@18.2.0
 - Testes: jest@29.6.2
-- Migrations: node-pg-migrate@6.2.2 + dotenv@16.4.4
+- Migrations: node-pg-migrate@6.2.2 + dotenv@16.4.4 + dotenv-expand@11.0.6
 
 # Banco de dados utilizado
 
@@ -113,18 +113,26 @@ npm run dev
 npm run lint:check
 ```
 
-- para rodar o script que padroniza o código de todo projeto:
+- Para rodar o script que padroniza o código de todo projeto:
 
 ```bash
 npm run lint:fix
 ```
 
-- para rodar os testes automatizados de todo projeto:
+- Para rodar os testes automatizados de todo projeto:
 
 ```bash
 npm run test
 ```
 
+- Para deixar os testes rodando em tempo real e executar ao salvar qualquer arquivo:
+
 ```bash
 npm run test:watch
+```
+
+- Para deixar testes específicos rodando em tempo real e executar ao salvar qualquer arquivo:
+
+```bash
+npm run test:watch -- migrations.get
 ```
