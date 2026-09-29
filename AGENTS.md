@@ -11,6 +11,10 @@ Estas orientações se aplicam a todo o repositório. Respeite as instruções a
 - Quando o pedido for apenas análise, não altere arquivos nem execute operações que modifiquem dados.
 - Trabalhe autonomamente no escopo autorizado. Pergunte quando faltar uma decisão que realmente afete o resultado, sem pedir confirmação para cada passo rotineiro.
 - Ao concluir, explique o que mudou, como foi verificado e o que não foi validado. Não afirme que testes ou deploy passaram sem evidência.
+- O usuário está acompanhando aulas do curso.dev neste projeto. Ao analisar alterações, confira a branch, o estado do Git e os commits para ajudar a identificar o conteúdo estudado.
+- Quando o acesso ao projeto exigir permissões adicionais, solicite acesso de leitura ou escrita conforme necessário, informando ao usuário o motivo e mantendo o escopo limitado à tarefa.
+- O usuário deseja registrar no Notion os aprendizados, decisões e pontos relevantes do desenvolvimento. Ajude a organizar essas anotações quando solicitado, sem alterar o Notion automaticamente sem autorização explícita.
+- O usuário autorizou commits e push quando solicitar diretamente essa ação para a branch em trabalho. Antes do push, confira o diff, a mensagem do commit, a branch e o remoto; nunca faça push para `master` sem autorização específica.
 
 ## Projeto e fonte de referência
 
