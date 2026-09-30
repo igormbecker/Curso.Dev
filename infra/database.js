@@ -28,15 +28,12 @@ async function getNewClient() {
   return client;
 }
 
-export default {
+const database = {
   query,
   getNewClient,
 };
-// O código que está acima é a mesma coisa que o abaixo.
-// export default {
-//   query: query,
-//   getNewClient: getNewClient,
-// };
+
+export default database;
 
 function getSSLValues() {
   // If POSTGRES_CA is set, we assume it's a production environment and use SSL with the provided CA certificate.
