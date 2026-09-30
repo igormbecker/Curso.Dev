@@ -11,6 +11,4 @@ const jestConfig = createJestConfig({
   testTimeout: 60000,
 });
 
-
-
 module.exports = jestConfig;
