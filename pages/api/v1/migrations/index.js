@@ -10,7 +10,6 @@ export default async function migrations(request, response) {
     return response.status(405).json({ error: "Method not allowed" }).end();
 
   try {
-
     dbClient = await database.getNewClient();
 
     const defaultMigrationsOptions = {
@@ -40,15 +39,10 @@ export default async function migrations(request, response) {
 
       return response.status(200).json(migratedMigrations);
     }
-
   } catch (error) {
-
     console.error("Error running migrations:", error);
     return response.status(500).json({ error: "Internal Server Error" }).end();
-
   } finally {
-
     await dbClient.end();
-
   }
 }
