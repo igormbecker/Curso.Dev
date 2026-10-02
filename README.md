@@ -1,138 +1,144 @@
-# Curso.Dev
+# Bectec
 
-Projeto desenvolvido no curso.dev que clona o projeto do site www.tabnews.com.br
+Projeto desenvolvido durante o curso.dev, inspirado no site TabNews. O repositório também serve de base para a evolução do site da Bectec.
 
-# Frameworks instalados
+## Tecnologias e dependências
 
-- Node: lts/hydrogen
-- NextJs: next@13.1.6
-- React: react@18.2.0
-- React-Dom: react-dom@18.2.0
-- Testes: jest@29.6.2
-- Migrations: node-pg-migrate@6.2.2 + dotenv@16.4.4 + dotenv-expand@11.0.6
+As versões abaixo refletem o package.json atual. O Node usado pelo projeto é definido em .nvmrc.
 
-# Banco de dados utilizado
+- Node.js: 24.21.0
+- Next.js: 16.3.8 (Pages Router)
+- React e React DOM: 19.3.0
+- PostgreSQL: 16.0-alpine3.18 (Docker)
+- Cliente PostgreSQL para JavaScript: pg@8.23.1
+- Migrações: node-pg-migrate@9.0.0
+- Configuração de ambiente: dotenv@18.0.5 e dotenv-expand@1000.0.0
+- Testes: jest@30.5.2
+- Lint: eslint@9.39.5, eslint-config-next@16.3.8 e eslint-plugin-jest@29.16.6
+- Formatação: prettier@3.9.9
 
-Basicamente o nosso banco de dados local ficou em um container criado pelo docker.
-As especificações do banco de dados e versão utilizada, estão dentro do arquivo 'compose.yaml', ao rodar o comando de subir o docker, ele procura este arquivo e segue as características definidas neste arquivo.
+Consulte package.json e package-lock.json para a lista completa e as versões instaladas.
 
-- Postgres: postgres:16.0-alpine3.18
-- Client Sql: postgresql-client
-- Client Sql via js PG: pg@8.11.3
+## Banco de dados local
 
-- Para listar todos containers:
+O PostgreSQL de desenvolvimento é iniciado pelo Docker Compose definido em infra/compose.yaml. As variáveis são lidas de .env.development.
 
 ```bash
 docker ps -a
 ```
 
-- Para subir o banco local (para rodar nos bastidores acrescentar -d):
+Para iniciar o banco em segundo plano:
 
 ```bash
-docker compose -f infra/compose.yaml up -d
+npm run services:up
 ```
 
-- Para recriar o container:
+Para parar o banco, preservando o container:
 
 ```bash
-docker compose -f infra/compose.yaml up -d --force-recreate
+npm run services:stop
 ```
 
-- Para derrubar o docker ativo:
+Para parar e remover os containers do Compose:
 
 ```bash
-docker compose -f infra/compose.yaml down
+npm run services:down
 ```
 
-- Para instalar o client:
+O Compose não declara um volume nomeado. Não remova o container se precisar preservar os dados locais.
+
+Para instalar o cliente psql no Ubuntu:
 
 ```bash
 sudo apt install postgresql-client
 ```
 
-- Para conectar ao banco pelo terminal:
+Para conectar ao banco local:
 
 ```bash
- psql --host=localhost --username=postgres --port=5432
+psql --host=localhost --username=postgres --port=5432
 ```
 
-- Para instalar o PG:
+## Ambiente de desenvolvimento
+
+Use o Node indicado pelo arquivo .nvmrc:
 
 ```bash
-npm install pg@8.11.3
+nvm install
+nvm use
+node --version
 ```
 
-# Comandos utilizados para rodar o projeto local:
-
-- listar versões do node:
-
-```bash
-nvm ls
-```
-
-- para instalar o node:
-
-```bash
-nvm install lts/hydrogen
-```
-
-- Para instalar dependencias:
-
-```bash
-npm install next@13.1.6 react@18.2.0 react-dom@18.2.0
-```
-
-- O comando '--save-dev' serve para dizer que esta é uma dependencia de desenvolvimento.
-
-```bash
-npm install --save-dev jest@29.6.2
-```
-
-- Abra o power shell no windows e clique na seta > e clique em linux terminal.
-- Localizar a pasta /home/igormbecker/projects/Curso.Dev no terminal do linux e execute o comando a seguir:
-
-```bash
-code .
-```
-
-- Ao realizar o clone do projeto, é necessário instalar as dependencias:
+Depois de clonar o projeto, instale as dependências:
 
 ```bash
 npm install
 ```
 
-- Para rodar o projeto:
+Abra a pasta do projeto no VS Code a partir do terminal Ubuntu/WSL:
+
+```bash
+code .
+```
+
+Inicie a aplicação:
 
 ```bash
 npm run dev
 ```
 
-- Para rodar o script que verifica padrão do código de todo projeto:
+Esse script inicia o banco, aguarda o PostgreSQL, aplica as migrações pendentes e inicia o Next.js. A aplicação fica disponível em http://localhost:3000.
 
-```bash
-npm run lint:check
-```
+## Scripts disponíveis
 
-- Para rodar o script que padroniza o código de todo projeto:
+Confira sempre os scripts atuais em package.json.
 
-```bash
-npm run lint:fix
-```
+- Verificar a formatação com Prettier:
 
-- Para rodar os testes automatizados de todo projeto:
+  ```bash
+  npm run lint:prettier:check
+  ```
 
-```bash
-npm run test
-```
+- Aplicar formatação com Prettier em todo o projeto:
 
-- Para deixar os testes rodando em tempo real e executar ao salvar qualquer arquivo:
+  ```bash
+  npm run lint:prettier:fix
+  ```
 
-```bash
-npm run test:watch
-```
+- Verificar o código com ESLint:
 
-- Para deixar testes específicos rodando em tempo real e executar ao salvar qualquer arquivo:
+  ```bash
+  npm run lint:eslint:check
+  ```
 
-```bash
-npm run test:watch -- migrations.get
-```
+- Executar os testes de integração:
+
+  ```bash
+  npm run test
+  ```
+
+  Esse script inicia o PostgreSQL e executa o Next.js junto com Jest. Os testes de migrations recriam o schema public; execute-os apenas com o banco local descartável.
+
+- Executar Jest em modo watch:
+
+  ```bash
+  npm run test:watch
+  ```
+
+- Criar uma migration:
+
+  ```bash
+  npm run migration:create -- nome-da-migration
+  ```
+
+- Aplicar migrations pendentes:
+
+  ```bash
+  npm run migration:up
+  ```
+
+- Reverter a última migration:
+
+  ```bash
+  npm run migration:down
+  ```
