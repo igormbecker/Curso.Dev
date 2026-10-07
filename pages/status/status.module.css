@@ -154,7 +154,7 @@
   font-size: 13px;
 }
 
-.metrics>div {
+.metrics > div {
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -216,7 +216,9 @@
   color: var(--text);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-  font: 12px / 1.7 Consolas, monospace;
+  font:
+    12px / 1.7 Consolas,
+    monospace;
 }
 
 /* Data de atualização */

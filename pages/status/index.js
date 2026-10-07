@@ -127,7 +127,13 @@ function DatabaseInfo({ database }) {
           <span>{Math.round(connectionUsage)}%</span>
         </div>
 
-        <meter className={styles.meter} min={0} max={maxConnections} value={openedConnections} aria-label="Database connection usage" />
+        <meter
+          className={styles.meter}
+          min={0}
+          max={maxConnections}
+          value={openedConnections}
+          aria-label="Database connection usage"
+        />
       </div>
     );
   }
