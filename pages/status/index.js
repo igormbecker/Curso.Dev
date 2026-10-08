@@ -1,5 +1,6 @@
 ﻿import useSWR from "swr";
 import styles from "./status.module.css";
+import { useState } from "react";
 
 async function fetchAPI(url) {
   const response = await fetch(url);
@@ -12,6 +13,7 @@ async function fetchAPI(url) {
 }
 
 export default function StatusPage() {
+  const [theme, setTheme] = useState("light");
   const { data, error, isLoading } = useSWR("/api/v1/status", fetchAPI, {
     refreshInterval: 5000,
   });
@@ -62,9 +64,24 @@ export default function StatusPage() {
   }
 
   return (
-    <div className={styles.page}>
+    <div className={styles.page} data-theme={theme}>
+      <style jsx global>{`
+        body {
+          margin: 0;
+        }
+      `}</style>
       <header className={styles.header}>
-        <span className={styles.brand}>Diagnostics center</span>
+        <span className={styles.brand}>&gt;_Diagnostics center</span>
+        <label className={styles.themeControl}>
+          Tema
+          <select
+            value={theme}
+            onChange={(event) => setTheme(event.target.value)}
+          >
+            <option value="light">Claro</option>
+            <option value="dark">Escuro</option>
+          </select>
+        </label>
       </header>
 
       <main className={styles.main}>
@@ -98,7 +115,7 @@ export default function StatusPage() {
 
       <footer className={styles.footer}>
         <span>/api/v1/status</span>
-        <span>Diagnostics at a glance</span>
+        <span>&gt;_bectec.</span>
       </footer>
     </div>
   );

@@ -1,17 +1,19 @@
 .page {
   /* Tema claro */
-  --background: #edf3f2;
-  --surface: #f9fcfb;
-  --text: #193537;
-  --muted: #536d6e;
-  --border: #ccddda;
-  --accent: #167369;
+  --background: #daddf4;
+  --surface: #e9ebfa;
+  --text: #373a86;
+  --muted: #373a86;
+  --border: #b8bce2;
+  --accent: #373a86;
   --healthy-background: #d9ede7;
   --healthy-text: #18734f;
 
   color-scheme: light;
-  min-height: 590px;
-  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
   background: var(--background);
   color: var(--text);
@@ -56,7 +58,30 @@
 /* Conteúdo principal */
 
 .main {
+  flex: 1;
   padding: 38px 40px;
+}
+
+.themeControl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.themeControl select {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.themeControl select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .introduction {
@@ -253,33 +278,28 @@
 
 /* Tema escuro */
 
-@media (prefers-color-scheme: dark) {
-  .page {
-    --background: #101e20;
-    --surface: #18292b;
-    --text: #e0efed;
-    --muted: #a0bcba;
-    --border: #355052;
-    --accent: #75d8c8;
-    --healthy-background: #25473f;
-    --healthy-text: #81d8b0;
-    --pending-background: #463b24;
-    --pending-text: #f0cc83;
-    --error-text: #ffaaa3;
+.page[data-theme="dark"] {
+  --background: #17182e;
+  --surface: #222441;
+  --text: #daddf4;
+  --muted: #bec2e4;
+  --border: #454973;
+  --accent: #b6baff;
+  --healthy-background: #25473f;
+  --healthy-text: #81d8b0;
+  --pending-background: #463b24;
+  --pending-text: #f0cc83;
+  --error-text: #ffaaa3;
 
-    color-scheme: dark;
-  }
+  color-scheme: dark;
 }
 
 /* Telas menores */
 
 @media (max-width: 600px) {
-  .page {
-    min-height: 820px;
-  }
-
   .header {
     padding: 20px;
+    flex-wrap: wrap;
   }
 
   .environment {

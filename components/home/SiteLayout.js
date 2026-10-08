@@ -18,7 +18,7 @@ export function Brand() {
   return (
     <span className={styles.brand}>
       <strong>
-        bectec<span aria-hidden="true">.</span>
+        <span aria-hidden="true">&gt;_</span>bectec<span aria-hidden="true">.</span>
       </strong>
       <small>
         Tecnologia e Desenvolvimento
@@ -78,7 +78,7 @@ export default function SiteLayout({ title, children }) {
         </div>
         <div className={styles.footerBottom}>
           <Brand />
-          <span>Software com propósito. Conversa com quem faz.</span>
+          <span>Software com propósito.</span>
         </div>
       </footer>
     </div>
