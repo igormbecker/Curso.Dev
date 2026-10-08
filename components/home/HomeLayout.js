@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import styles from "./shared.module.css";
+import { useState } from "react";
+import styles from "./homeLayout.module.css";
 
 export const contactEmail = "imbjr.work@gmail.com";
 export const contactLink = `mailto:${contactEmail}?subject=Vamos%20conversar%20sobre%20um%20projeto`;
@@ -18,7 +19,8 @@ export function Brand() {
   return (
     <span className={styles.brand}>
       <strong>
-        <span aria-hidden="true">&gt;_</span>bectec<span aria-hidden="true">.</span>
+        <span aria-hidden="true">&gt;_</span>bectec
+        <span aria-hidden="true">.</span>
       </strong>
       <small>
         Tecnologia e Desenvolvimento
@@ -30,9 +32,14 @@ export function Brand() {
 }
 
 // Estrutura compartilhada da página: navegação, conteúdo e contato.
-export default function SiteLayout({ title, children }) {
+export default function HomeLayout({ title, children }) {
+  const [theme, setTheme] = useState("light");
   return (
-    <div className={`${styles.site} ${styles.experience}`} lang="pt-BR">
+    <div
+      className={`${styles.site} ${styles.experience}`}
+      lang="pt-BR"
+      data-theme={theme}
+    >
       <Head>
         <title>{title} | Bectec</title>
         <meta
@@ -59,6 +66,16 @@ export default function SiteLayout({ title, children }) {
             Vamos conversar <span aria-hidden="true">↗</span>
           </a>
         </nav>
+        <label className={styles.themeControl}>
+          Tema
+          <select
+            value={theme}
+            onChange={(event) => setTheme(event.target.value)}
+          >
+            <option value="light">Claro</option>
+            <option value="dark">Escuro</option>
+          </select>
+        </label>
       </header>
       <main id="conteudo">{children}</main>
       <footer className={styles.footer} id="contato">

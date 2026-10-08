@@ -1,5 +1,5 @@
-import ExperiencePage from "../components/home/ExperiencePage";
+import HomePage from "../components/home/HomePage";
 
 export default function Home() {
-  return <ExperiencePage />;
+  return <HomePage />;
 }
