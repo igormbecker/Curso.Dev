@@ -84,7 +84,7 @@ Referência da análise inicial (24/09/2026): Next.js 13.1.6, React 18.2.0, Post
 
 ## Nomes de arquivos
 
-Use nomes de arquivos em inglês em todo o projeto, incluindo componentes e folhas de estilo. Exemplos: `SiteLayout.js`, `ExperiencePage.js`, `shared.module.css` e `experience.module.css`. Ao renomear um arquivo, atualize todos os imports e referências. O conteúdo apresentado ao usuário continua em português brasileiro.
+Use nomes de arquivos em inglês em todo o projeto, incluindo componentes e folhas de estilo. Exemplos: `HomeLayout.js`, `HomePage.js`, `homeLayout.module.css` e `home.module.css`. Ao renomear um arquivo, atualize todos os imports e referências. O conteúdo apresentado ao usuário continua em português brasileiro.
 
 ## Padrão de strings em JavaScript
 
@@ -98,7 +98,7 @@ export const contactLink = `mailto:${contactEmail}?subject=Vamos%20conversar%20s
 
 ## Estado inicial conhecido — verificar antes de assumir
 
-- A página inicial usa a direção Experiência, com serviços, trajetória de Igor Becker e áreas de atuação interativas. O conteúdo fica em `components/home/ExperiencePage.js`, o layout em `SiteLayout.js` e os estilos em dois CSS Modules separados. As propostas descartadas e a rota `/exemplos` foram removidas.
+- A página inicial usa a direção Experiência, com serviços, trajetória de Igor Becker e áreas de atuação interativas. O conteúdo fica em `components/home/HomePage.js`, o layout em `HomeLayout.js` e os estilos em dois CSS Modules separados. As propostas descartadas e a rota `/exemplos` foram removidas.
 - Os arquivos de `models` ainda não implementam funcionalidades. Não há cadastro, login ou publicações implementados.
 - `/api/v1/status` consulta versão do PostgreSQL, limite de conexões e conexões abertas, retornando também um horário.
 - `GET /api/v1/migrations` consulta migrations pendentes; `POST` as aplica e retorna 201 se executou alguma, ou 200 quando não há pendências. Outros métodos retornam 405.

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import SiteLayout, { ContactButton } from "./SiteLayout";
-import shared from "./shared.module.css";
-import styles from "./experience.module.css";
+import HomeLayout, { ContactButton } from "./HomeLayout";
+import shared from "./homeLayout.module.css";
+import styles from "./home.module.css";
 
 // Experiências de Igor Becker; a origem de cada projeto aparece na descrição.
 const experiences = [
@@ -83,14 +83,14 @@ const experiences = [
   },
 ];
 
-export default function ExperiencePage() {
+export default function HomePage() {
   const [selectedId, setSelectedId] = useState("sistemas");
   const selectedExperience = experiences.find(
     (experience) => experience.id === selectedId,
   );
 
   return (
-    <SiteLayout title="Tecnologia e Desenvolvimento de Software">
+    <HomeLayout title="Tecnologia e Desenvolvimento de Software">
       <section className={styles.experienceHero}>
         <p className={shared.sectionLabel}>
           Desenvolvimento · Integração · Automação
@@ -220,6 +220,6 @@ export default function ExperiencePage() {
           Ver trajetória no LinkedIn
         </a>
       </section>
-    </SiteLayout>
+    </HomeLayout>
   );
 }

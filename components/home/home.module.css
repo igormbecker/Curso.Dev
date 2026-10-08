@@ -57,24 +57,24 @@
   margin-bottom: 20px;
 }
 .filterButtons button {
-  background: #fff;
-  border: 1px solid #ccd0df;
-  color: #52596b;
+  background: var(--filter-background);
+  border: 1px solid var(--filter-border);
+  color: var(--filter-text);
   padding: 10px 19px;
   border-radius: 30px;
   cursor: pointer;
   font-size: 13px;
 }
 .filterButtons button[aria-pressed="true"] {
-  background: #373a86;
-  color: white;
-  border-color: #373a86;
+  background: var(--accent);
+  color: var(--button-text);
+  border-color: var(--accent);
 }
 .filterButtons button:hover {
-  border-color: #373a86;
+  border-color: var(--accent);
 }
 .workPanel {
-  background: #edf1f7;
+  background: var(--surface);
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   padding: 45px;
@@ -101,7 +101,7 @@
   flex-wrap: wrap;
   font-size: 11px;
   margin: 25px 0 0;
-  color: #373a86;
+  color: var(--accent);
 }
 .workflow {
   background: #373a86;
@@ -167,11 +167,11 @@
   gap: 30px;
 }
 .experienceServices article {
-  border-top: 1px solid #c9cbdc;
+  border-top: 1px solid var(--service-border);
   padding-top: 25px;
 }
 .experienceBio {
-  background: #edf1f7;
+  background: var(--surface);
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
