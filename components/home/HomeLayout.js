@@ -5,6 +5,7 @@ import styles from "./homeLayout.module.css";
 
 export const contactEmail = "imbjr.work@gmail.com";
 export const contactLink = `mailto:${contactEmail}?subject=Vamos%20conversar%20sobre%20um%20projeto`;
+export const systemStatusLink = "/status";
 
 export function ContactButton({ children = "Conversar sobre meu projeto" }) {
   return (
@@ -95,7 +96,7 @@ export default function HomeLayout({ title, children }) {
         </div>
         <div className={styles.footerBottom}>
           <Brand />
-          <span>Software com propósito.</span>
+          <Link href={systemStatusLink}>Status do sistema</Link>
         </div>
       </footer>
     </div>
