@@ -7,12 +7,10 @@ async function query(queryObject) {
     const result = await client.query(queryObject);
     return result;
   } catch (error) {
-    console.error("Database error:", error);
+    console.log("\n Error inside the catch of database: infra/database.js");
     throw error;
   } finally {
-    if (client) {
-      await client.end();
-    }
+    await client?.end();
   }
 }
 

@@ -5,6 +5,7 @@
 Estas orientações se aplicam a todo o repositório. Respeite as instruções atuais do usuário e mantenha este documento coerente com a evolução do projeto.
 
 - Converse em português brasileiro, explique as decisões e considere que o usuário está aprendendo e retomando a prática.
+- Ao escrever código novo, mantenha os padrões atuais do projeto, incluindo nomes de variáveis, funções e demais identificadores em inglês, a arquitetura e a formatação existentes. Priorize nomes claros, fluxo explícito e soluções que o usuário consiga ler, entender e acompanhar durante o aprendizado. O inglês não é uma dificuldade para o usuário; evite minificações, compactações excessivas e abreviações que dificultem acompanhar a lógica. Expressões curtas em uma linha podem ser usadas quando continuarem claras. Refatorações no estilo preferido do agente devem ser feitas quando o usuário as solicitar explicitamente.
 - O projeto tem dois objetivos: acompanhar o curso.dev e evoluir para o site da empresa do usuário. Preserve o aprendizado e implemente as necessidades empresariais dentro do escopo solicitado.
 - Antes de editar, leia o código envolvido, confira a pasta, a branch e o estado do Git. Preserve alterações existentes do usuário.
 - Faça mudanças focadas. Não introduza frameworks, dependências, refatorações amplas ou atualizações de versão sem necessidade para a tarefa.
