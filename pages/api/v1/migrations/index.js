@@ -1,48 +1,54 @@
 ﻿import { runner as migrationRunner } from "node-pg-migrate";
 import { resolve } from "node:path";
+import { createRouter } from "next-connect";
 import database from "infra/database.js";
+import controller from "infra/controller.js";
 
-export default async function migrations(request, response) {
-  const allowedMethods = ["GET", "POST"];
+const router = createRouter();
+
+router.get(getHandler);
+router.post(postHandler);
+
+export default router.handler(controller.errorHandlers);
+
+function getMigrationsOptions(dbClient, dryRun = true) {
+  return {
+    dbClient: dbClient,
+    dryRun: dryRun,
+    dir: resolve("infra", "migrations"),
+    direction: "up",
+    verbose: true,
+    migrationsTable: "pgmigrations",
+  };
+}
+
+async function getHandler(request, response) {
   let dbClient;
-
-  if (!allowedMethods.includes(request.method))
-    return response.status(405).json({ error: "Method not allowed" }).end();
-
   try {
     dbClient = await database.getNewClient();
+    const pendingMigrations = await migrationRunner(
+      getMigrationsOptions(dbClient),
+    );
 
-    const defaultMigrationsOptions = {
-      dbClient: dbClient,
-      //databaseUrl: process.env.DATABASE_URL,
-      dryRun: true,
-      dir: resolve("infra", "migrations"),
-      direction: "up",
-      verbose: true,
-      migrationsTable: "pgmigrations",
-    };
-
-    if (request.method === "GET") {
-      const pendingMigrations = await migrationRunner(defaultMigrationsOptions);
-      return response.status(200).json(pendingMigrations);
-    }
-
-    if (request.method === "POST") {
-      const migratedMigrations = await migrationRunner({
-        ...defaultMigrationsOptions,
-        dryRun: false,
-      });
-
-      // Se alguma migration foi executada, retornamos 201, caso contrário, retornamos 200
-      if (migratedMigrations.length > 0)
-        return response.status(201).json(migratedMigrations);
-
-      return response.status(200).json(migratedMigrations);
-    }
-  } catch (error) {
-    console.error("Error running migrations:", error);
-    return response.status(500).json({ error: "Internal Server Error" }).end();
+    return response.status(200).json(pendingMigrations);
   } finally {
-    await dbClient.end();
+    await dbClient?.end();
+  }
+}
+
+async function postHandler(request, response) {
+  let dbClient;
+  try {
+    dbClient = await database.getNewClient();
+    const migratedMigrations = await migrationRunner(
+      getMigrationsOptions(dbClient, false),
+    );
+
+    // Se alguma migration foi executada, retornamos 201, caso contrário, retornamos 200
+    return response
+      .status(migratedMigrations.length > 0 ? 201 : 200)
+      .json(migratedMigrations);
+  } finally {
+    await dbClient?.end();
   }
 }
