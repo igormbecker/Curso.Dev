@@ -8,7 +8,6 @@ async function query(queryObject) {
     return result;
   } catch (error) {
     console.log("\n Error inside the catch of database: infra/database.js");
-    console.log(error);
     throw error;
   } finally {
     await client?.end();
