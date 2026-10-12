@@ -16,7 +16,7 @@ async function listPendingMigrations() {
     dbClient = await database.getNewClient();
     const pendingMigrations = await migrationRunner({
       ...defaultMigrationOptions,
-      dbClient
+      dbClient,
     });
     return pendingMigrations;
   } finally {
@@ -31,14 +31,13 @@ async function runMigrations() {
     const migratedMigrations = await migrationRunner({
       ...defaultMigrationOptions,
       dbClient,
-      dryRun: false
+      dryRun: false,
     });
     return migratedMigrations;
   } finally {
     await dbClient?.end();
   }
 }
-
 
 const migrator = {
   listPendingMigrations,
