@@ -15,7 +15,7 @@ async function getHandler(request, response) {
 }
 
 async function postHandler(request, response) {
-  const migratedMigrations = await migrator.runMigrations();
+  const migratedMigrations = await migrator.runPendingMigrations();
   // Se alguma migration foi executada, retornamos 201, caso contrário, retornamos 200
   return response
     .status(migratedMigrations.length > 0 ? 201 : 200)
