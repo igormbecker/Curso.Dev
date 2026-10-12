@@ -6,6 +6,11 @@ export const up = (pgm) => {
       default: pgm.func("gen_random_uuid()"),
     },
 
+    name: {
+      type: "varchar(255)",
+      notNull: true,
+    },
+
     //For reference, Github limits usernames to 39 characters.
     username: {
       type: "varchar(30)",
@@ -36,14 +41,6 @@ export const up = (pgm) => {
       type: "timestamptz",
       default: pgm.func("now()"),
     },
-    /*
-    name: {
-      type: "varchar(255)",
-      notNull: true,
-    },
-
-
-    */
   });
 };
 
