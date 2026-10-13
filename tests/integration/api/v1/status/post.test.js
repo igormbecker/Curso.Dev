@@ -17,7 +17,7 @@ describe("POST /api/v1/status", () => {
       expect(responseBody).toEqual({
         name: "MethodNotAllowedError",
         message: "Method not allowed",
-        action: "Method not allowed",
+        action: "Method not allowed.",
         status_code: 405,
       });
     });
