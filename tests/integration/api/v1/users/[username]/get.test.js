@@ -24,7 +24,9 @@ describe("GET /api/v1/users/[username]", () => {
       });
       expect(response1.status).toBe(201);
 
-      const response2 = await fetch("http://localhost:3000/api/v1/users/MesmoCase");
+      const response2 = await fetch(
+        "http://localhost:3000/api/v1/users/MesmoCase",
+      );
       expect(response2.status).toBe(200);
 
       const response2Body = await response2.json();
@@ -59,7 +61,9 @@ describe("GET /api/v1/users/[username]", () => {
       });
       expect(response1.status).toBe(201);
 
-      const response2 = await fetch("http://localhost:3000/api/v1/users/casediferente");
+      const response2 = await fetch(
+        "http://localhost:3000/api/v1/users/casediferente",
+      );
       expect(response2.status).toBe(200);
 
       const response2Body = await response2.json();
@@ -79,15 +83,18 @@ describe("GET /api/v1/users/[username]", () => {
     });
 
     test("With nonexistent username", async () => {
-      const response = await fetch("http://localhost:3000/api/v1/users/UsuarioInexistente");
+      const response = await fetch(
+        "http://localhost:3000/api/v1/users/UsuarioInexistente",
+      );
       expect(response.status).toBe(404);
 
       const responseBody = await response.json();
       expect(responseBody).toEqual({
         name: "NotFoundError",
         message: "Username not found.",
-        action: "Please check that the username was entered correctly and try again.",
-        status_code: 404
+        action:
+          "Please check that the username was entered correctly and try again.",
+        status_code: 404,
       });
     });
   });

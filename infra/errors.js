@@ -65,7 +65,8 @@ export class NotFoundError extends Error {
       cause,
     });
     this.name = "NotFoundError";
-    this.action = action || "Please fix the information provided and try again.";
+    this.action =
+      action || "Please fix the information provided and try again.";
     this.statusCode = 404;
   }
 

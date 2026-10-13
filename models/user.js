@@ -1,7 +1,6 @@
 ﻿import database from "infra/database.js";
 import { ValidationError, NotFoundError } from "infra/errors";
 
-
 async function findOneByUsername(username) {
   const userFound = await runSelectQuery(username);
 
@@ -25,12 +24,12 @@ async function findOneByUsername(username) {
     if (results.rowCount === 0) {
       throw new NotFoundError({
         message: "Username not found.",
-        action: "Please check that the username was entered correctly and try again.",
+        action:
+          "Please check that the username was entered correctly and try again.",
       });
     }
 
     return results.rows[0];
-
   }
 }
 
