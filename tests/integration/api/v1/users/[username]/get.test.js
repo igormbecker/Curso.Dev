@@ -1,5 +1,6 @@
 ﻿import { version as uuidVersion } from "uuid";
 import orchestrator from "tests/orchestrator.js";
+import password from "models/password.js";
 
 beforeAll(async () => {
   await orchestrator.waitForAllServices();
@@ -36,7 +37,7 @@ describe("GET /api/v1/users/[username]", () => {
         name: "Mesmo Case",
         username: "MesmoCase",
         email: "mesmo.case@bectec.com.br",
-        password: "password123",
+        password: response2Body.password,
         created_at: response2Body.created_at,
         updated_at: response2Body.updated_at,
       });
@@ -72,7 +73,7 @@ describe("GET /api/v1/users/[username]", () => {
         name: "Case Diferente",
         username: "CaseDiferente",
         email: "case.diferente@bectec.com.br",
-        password: "password123",
+        password: response2Body.password,
         created_at: response2Body.created_at,
         updated_at: response2Body.updated_at,
       });
