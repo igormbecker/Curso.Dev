@@ -136,7 +136,9 @@ describe("GET /api/v1/user", () => {
 
       jest.useFakeTimers({
         now: new Date(
-          Date.now() - session.EXPIRATION_IN_MILLISECONDS + remainingTimeInMilliseconds,
+          Date.now() -
+            session.EXPIRATION_IN_MILLISECONDS +
+            remainingTimeInMilliseconds,
         ),
       });
 
